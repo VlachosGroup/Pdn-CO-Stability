@@ -1,22 +1,27 @@
 # Pdn-CO-Stability
- Dataset, machine learning models and Monte Carlo simulations in Python for subnanometer CO-adsorbed Pd clusters supported on Ceria
+ Dataset, machine learning models and Monte Carlo simulations in Python for subnanometer CO-adsorbed Pdn clusters supported on Ceria
 
 
 ## Computational Framework 
 ![framework](docs/framework.svg)
 
-## Pd cluster structure dataset 
-The dataset contains Pdn cluster structures in the size range from 1 to 21.
-- [DFT dataset](/dataset/DFT_structures)
-- [Configuration (lattice mapping of DFT structures) dataset](/dataset/configurations)
+## Dataset 
+The dataset contains Pdn cluster structures in the size range from 1 to 21, descriptors and CO-CO interactions.
+- [Cluster structures from DFT calculations](/dataset/DFT_structures)
+- [Descriptors for single CO adsorption](/dataset/descriptors)
+- [CO-CO interactions for multiple CO adsorption](/dataset/interactions)
 
 ## Pd cluster energy model 
-- [LASSO-assisted Cluster Expansion (CE), an efficient mapping from structures to energies](/lasso-assisted-CE)
+The machine learning model to predict Pdn energy from a given structure
+- [Pdn-CE](/Pdn-CE)
 
-## Structure optimization algoirthms in cannoical ensembles 
-The detailed usage can be found in the links.
-- [Metropolis MC](/structure-optimization/metropolis-MC)
-- [Cluster Genetic Algorithm (CGA)](/structure-optimization/CGA)
+## CO adlayer energy model 
+The machine learning model to predict CO adlayer energy from a given structure
+- [CO-CE](/CO-CE)
+
+## Structure optimization algoirthms in Grand Cannoical ensembles 
+Grand Cannoical Monte Carlo (GCMC)
+Automatic discovery of optimal (lowest free energy) adsorbate layer structures at a given temperature and CO pressure 
 ![Operators](/GCMC/GCMC_flowchart.svg)
 
 ## Dependencies 
