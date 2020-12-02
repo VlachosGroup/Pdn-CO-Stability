@@ -1,4 +1,6 @@
-# LASSO-assisted-Cluster-Expansion 
+# Pdn cluster expansion (CE)
+
+## LASSO-assisted-Cluster-Expansion 
 The cluster expansion (CE) model is trained on Pdn clusters supported on Ceria. The model can be used to predict energy for any given cluster structures on a unit cell. 
 
 ## Training 
@@ -59,3 +61,12 @@ E_pred_rnd, _  = Pdn_super.predict_E(config_rnd)
 # Visualize the atomic configuration
 atoms_rnd = energy.append_support(config_rnd, super_mother, view_flag=True)
 ```
+
+## Reading more 
+- Dataset and description 
+
+[GitHub repository](https://github.com/VlachosGroup/Pdn-Cluster-Structure-Optimization)
+
+- Publication 
+
+[Wang, Y., Su, Y., Hensen, E. J. M., & Vlachos, D. G. (2020). Finite-Temperature Structures of Supported Subnanometer Catalysts Inferred via Statistical Learning and Genetic Algorithm-Based Optimization. ACS Nano. https://doi.org/10.1021/acsnano.0c06472](https://pubs.acs.org/doi/10.1021/acsnano.0c06472)
