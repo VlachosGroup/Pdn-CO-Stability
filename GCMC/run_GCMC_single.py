@@ -17,7 +17,7 @@ import binding_functions as binding
 import time
 
 pdx = pd6_2d
-pdx_name = 'pdvis'
+pdx_name = 'pdx'
 
 OutputPathName = 'results'
 
@@ -31,19 +31,19 @@ global_plot_flag = True
 
 
 # Generate the Pd1 GCMC simulation trajectory
-pd1_traj = GCMC.TrajectoryRejectionFree(T, PCO, pdx, pdx_name, progress_flag = global_progress_flag)
-pd1_traj.set_subdirectories()
-pd1_traj.rseed = 1
-pd1_traj.nsteps = 1000
-pd1_traj.run()
+pdx_traj = GCMC.TrajectoryRejectionFree(T, PCO, pdx, pdx_name, progress_flag = global_progress_flag)
+pdx_traj.set_subdirectories()
+pdx_traj.rseed = 1
+pdx_traj.nsteps = 1000
+pdx_traj.run()
 
 
 #%%
 # Get the final/equilibrium status
-pd1_nCO, pd1_mu = pd1_traj.analysis(plot_flag = global_plot_flag)
-view(pd1_traj.PdnCOm_atoms)
+pdx_nCO, pdx_mu = pdx_traj.analysis(plot_flag = global_plot_flag)
+view(pdx_traj.PdnCOm_atoms)
 
 end_time = time.time()
 all_time = (end_time - start_time)/60
 
-print(pd1_mu)
+print(pdx_mu)

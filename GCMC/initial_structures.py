@@ -17,16 +17,16 @@ import time
 
 import platform
 HomePath = os.path.expanduser('~')
-ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-Dynamics-Model')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
 
 if platform.system() == 'Linux':
     ProjectPath = '/work/ccei_biomass/users/wangyf/cluster_project/CE_opt'
 
 
 # CO binding model directory
-binding_path = os.path.join(ProjectPath, 'CO-adsorption', 'binding', 'v1')
+binding_path = os.path.join(ProjectPath, 'CO-CE')
 # Energy model directory
-energy_path = os.path.join(ProjectPath, 'Cluster-Expansion', 'v11_annealing')
+energy_path = os.path.join(ProjectPath, 'Pdn-CE')
 
 # LASSO model directory
 selected_batches = [0, 1, 2, 3]

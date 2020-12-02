@@ -618,7 +618,7 @@ class graphs():
         
         for i in range(cns):
             c = cson[i]
-            Gc.add_node(c, pos = cmother[c][:2], z = str(int(cmother[c][2]/self.dz)), color = self.filled)
+            Gc.add_node(i, pos = cmother[c][:2], z = str(int(cmother[c][2]/self.dz)), color = self.filled)
             
         cedge = []
         cedge_d = [] # the distance of each edge
@@ -628,14 +628,14 @@ class graphs():
             for j in np.arange(i+1,cns):
                 c  = cson[i]
                 d = cson[j]
-                cedge.append((c,d))
+                cedge.append((i,j))
                 cedge_d.append(two_points_D(cmother[c],cmother[d])) 
                 cedge_z.append(str(int(cmother[c][2]/self.dz))+str(int(cmother[d][2]/self.dz)))
         
         cne = len(cedge)
         for i in range(cne):
             if cNN1: # only include neighboring edges in the graph
-                if np.abs(cedge_d[i]-1) <= 0.05:  # check if the edge is closer to 1, 0.05 is the tolerance
+                if cedge_d[i] <= 1: 
                     Gc.add_edges_from([cedge[i]], z = cedge_z[i], length = cedge_d[i])
             else:
                Gc.add_edges_from([cedge[i]], z = cedge_z[i], length = cedge_d[i])

@@ -2,7 +2,7 @@
 """
 Created on Tue Oct 20 23:14:25 2020
 
-@author: yifan
+Analyse the isomer and size distributions
 """
 import os
 import pandas as pd
@@ -35,17 +35,10 @@ def set_color(violin_parts, c):
     violin_parts['cbars'].set_color(c)
 
 pdx_names = [25, 30, 38, 55]  
-df_list = []
 
-# Read the physics file
-for pdi_name in pdx_names:
-    filename_stable = os.path.join(os.getcwd(),  'pd'+  str(pdi_name) + '_stable_config.csv')
-    df_i = pd.read_csv(filename_stable, index_col=False)
-    df_list.append(df_i)
-    
-df_all = pd.concat(df_list)
-df_all.to_csv('pdall_stable_config_300K.csv', index = False)
-
+# read the data of stable configurations
+filename_stable = os.path.join(os.getcwd(),  'pd_large_stable_config_300K.csv')  
+df_all = pd.read_csv(filename_stable, index_col=False)
 
 #%%
 # select 300K and 1e-1
@@ -58,6 +51,8 @@ size_labels =  pdx_names
 # plot violin for all isomers 
 mu_all_list = []
 mco_all_list = []
+
+# the previous lowest free energy n = 1-21 
 mu_all_mean_small = -2.936011156
 # mu_all_array = np.array(df_TP['mu_mean'])
 # mu_all_min = np.min(mu_all_array)
@@ -89,10 +84,6 @@ ax2.set_ylabel(r'$\rm \overline{m}_{CO}\ $')
 ax2.set_ylim([0, 2])
 #ax2.set_xlim([0, 10])
 set_axis_style(ax2,size_labels)
-
-
-
-
 
 
 #%%

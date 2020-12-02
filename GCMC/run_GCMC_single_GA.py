@@ -21,7 +21,7 @@ import pickle
 
 import platform
 HomePath = os.path.expanduser('~')
-ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-Dynamics-Model')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
 
 if platform.system() == 'Linux':
     ProjectPath = '/work/ccei_biomass/users/wangyf/cluster_project/CE_opt'
@@ -33,7 +33,7 @@ from initial_structures import *
 from ase.visualize import view
 
 # CO binding model directory
-binding_path = os.path.join(ProjectPath, 'CO-adsorption', 'binding', 'v1')
+binding_path = os.path.join(ProjectPath, 'CO-CE')
 sys.path.append(binding_path)
 import binding_functions as binding
 
@@ -113,7 +113,7 @@ def get_pickle_path(npdx, InputPath = os.path.abspath(os.getcwd()), ResultsName 
         
         
 #%% Simulation specifications
-npdx= 25
+npdx= 6
 T_GA = 300  # Ensemble temperature
 filename_hof = os.path.join(os.getcwd(), 'GA_hofs', 'ga_hall_of_fame_' + str(npdx) + '_' + str(T_GA) + 'k' + '.csv')
 hof_inds, hof_fitnesses= read_history(filename_hof)
@@ -183,7 +183,7 @@ pdx_name = 'pd' + str(npdx) # folder name
 #%%
 index = 3
 pdx = pdx_sim[index]
-pdx_name = 'pdvis'
+pdx_name = 'pdx'
 
 OutputPathName = 'results'
 
@@ -197,26 +197,21 @@ global_plot_flag = True
 
 
 # Generate the Pd1 GCMC simulation trajectory
-pd1_traj = GCMC.TrajectoryRejectionFree(T, PCO, pdx, pdx_name, progress_flag = global_progress_flag)
-pd1_traj.set_subdirectories()
-pd1_traj.rseed = 1
-pd1_traj.nsteps = 1000
-pd1_traj.run()
+pdx_traj = GCMC.TrajectoryRejectionFree(T, PCO, pdx, pdx_name, progress_flag = global_progress_flag)
+pdx_traj.set_subdirectories()
+pdx_traj.rseed = 1
+pdx_traj.nsteps = 1000
+pdx_traj.run()
 
 
 #%%
 # Get the final/equilibrium status
-pd1_nCO, pd1_mu = pd1_traj.analysis(plot_flag = global_plot_flag)
-view(pd1_traj.PdnCOm_atoms)
+pdx_nCO, pdx_mu = pdx_traj.analysis(plot_flag = global_plot_flag)
+view(pdx_traj.PdnCOm_atoms)
 
 
 end_time = time.time()
 all_time = (end_time - start_time)/60
 
-print(pd1_mu)
-stable_config_info = pd1_traj.analyze_sites()
-
-# pd1 = pd.DataFrame(stable_config_info, index = [0])
-# pd2 = pd.DataFrame(stable_config_info, index = [0])
-
-# pdx = pd.concat([pd1, pd2])
+print(pdx_mu)
+stable_config_info = pdx_traj.analyze_sites()

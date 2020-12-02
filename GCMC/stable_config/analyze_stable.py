@@ -37,7 +37,7 @@ def set_color(violin_parts, c):
     violin_parts['cbars'].set_color(c)
 
 
-# Append the configs at 300K
+# read the data of stable configurations
 filename_stable = os.path.join(os.getcwd(),  'pdall_stable_config_all_conditions.csv')   
 df_all = pd.read_csv(filename_stable, index_col=False)
 
@@ -364,8 +364,6 @@ rf_opt_mu.fit(X_train_mu, y_train_mu)
 # Error on test data
 y_predict_test_mu = rf_opt_mu.predict(X_test_mu)
 RMSE_test_mu = np.sqrt(mean_squared_error(y_test_mu, y_predict_test_mu))
-
-
 
 # Error on all data
 y_predict_mu = rf_opt_mu.predict(X_rf)

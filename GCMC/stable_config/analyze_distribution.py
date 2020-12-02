@@ -34,7 +34,7 @@ def set_color(violin_parts, c):
     violin_parts['cmins'].set_color(c)
     violin_parts['cbars'].set_color(c)
 
-# Append the configs at 300K
+# read the data of stable configurations
 filename_stable = os.path.join(os.getcwd(),  'pdall_stable_config_all_conditions.csv')   
 df_all = pd.read_csv(filename_stable, index_col=False)
 
