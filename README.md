@@ -1,9 +1,14 @@
 # Pdn-CO-Stability
- Dataset, machine learning models and Monte Carlo simulations in Python for subnanometer CO-adsorbed Pdn clusters supported on Ceria
+ Dataset, machine learning models and Monte Carlo simulations in Python for evaluating stability of subnanometer CO-adsorbed Pdn clusters supported on Ceria
 
 
 ## Computational Framework 
 ![framework](docs/framework.svg)
+
+Note
+- Machine learning models are efficient structure-energy mapping
+- Low energy indicates higher stability 
+- Monte Carlo simualtions are used to optimize the strutcure 
 
 
 ## Dataset 
