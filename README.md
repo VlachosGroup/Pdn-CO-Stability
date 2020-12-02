@@ -5,24 +5,30 @@
 ## Computational Framework 
 ![framework](docs/framework.svg)
 
+
 ## Dataset 
 The dataset contains Pdn cluster structures in the size range from 1 to 21, descriptors and CO-CO interactions.
 - [Cluster structures from DFT calculations](/dataset/DFT_structures)
 - [Descriptors for single CO adsorption](/dataset/descriptors)
 - [CO-CO interactions for multiple CO adsorption](/dataset/interactions)
 
+
 ## Pd cluster energy model 
 The machine learning model to predict Pdn energy from a given structure
 - [Pdn-CE](/Pdn-CE)
+
 
 ## CO adlayer energy model 
 The machine learning model to predict CO adlayer energy from a given structure
 - [CO-CE](/CO-CE)
 
+
 ## Structure optimization algoirthms in Grand Cannoical ensembles 
 Grand Cannoical Monte Carlo (GCMC)
 Automatic discovery of optimal (lowest free energy) adsorbate layer structures at a given temperature and CO pressure 
+
 ![Operators](/GCMC/GCMC_flowchart.svg)
+
 
 ## Dependencies 
 - Python version 3.6+
