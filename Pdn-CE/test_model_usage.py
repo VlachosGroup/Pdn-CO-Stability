@@ -20,9 +20,9 @@ import time
 import platform
 HomePath = os.path.expanduser('~')
 ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 
-                           'Pdn-Cluster-Structure-Optimization')
+                           'Pdn-CO-Stability')
 # Energy model directory
-energy_path = os.path.join(ProjectPath, 'lasso-assisted-CE')
+energy_path = os.path.join(ProjectPath, 'Pdn-CE')
 
 # LASSO model directory
 selected_batches = [0, 1, 2, 3]

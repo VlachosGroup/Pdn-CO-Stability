@@ -28,15 +28,15 @@ from ase.io import read, write
 from ase.data import covalent_radii
 
 HomePath = os.path.expanduser('~')
-ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-Dynamics-Model')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
 
 if platform.system() == 'Linux':
     ProjectPath = '/work/ccei_biomass/users/wangyf/cluster_project/CE_opt'
 
 # CO binding model directory
-binding_path = os.path.join(ProjectPath, 'CO-adsorption', 'binding', 'v1')
+binding_path = os.path.join(ProjectPath, 'CO-CE')
 # Energy model directory
-energy_path = os.path.join(ProjectPath, 'Cluster-Expansion', 'v12_paper', 'lasso_CE')
+energy_path = os.path.join(ProjectPath, 'Pdn-CE')
 
 sys.path.append(binding_path)
 sys.path.append(energy_path)
@@ -164,20 +164,22 @@ pd7_CO_sites = [[[99, 102], [101, 102]], #2CO
 
 pd20_CO_sites = [[[106, 107], [106, 113], [102, 103], [108, 114]], #4CO
                    [[106, 107], [106, 113], [102, 103], [108, 114], [108, 109]], #5CO
-                   [[106, 107], [106, 113], [103, 113, 115], [102, 103], [108, 114], [108, 109]], #6CO
-                   [[106, 107], [106, 113], [103, 113, 115],  [102, 103], [108, 114], [108, 109], [114, 115]], #7CO
+                   [[106, 107], [106, 113], [103, 113, 114], [102, 103], [108, 114], [108, 109]], #6CO
+                   [[106, 107], [106, 113], [103, 113, 114],  [102, 103], [108, 114], [108, 109], [114, 115]], #7CO
                    [[106, 107], [106, 113], [100, 107], [113, 115], [102, 103], [108, 114], [108, 109], [114, 115]], #8CO  
-                   [[106, 107], [106, 113], [100, 107], [103, 113, 115], [115], [102, 103], [108, 114], [108, 109], [114, 115]], #9CO  
+                   [[106, 107], [106, 113], [100, 107], [103, 113, 114], [115], [102, 103], [108, 114], [108, 109], [114, 115]], #9CO  
                    [[106, 107], [106, 113], [100], [103, 113], [115], [112, 113], [102, 103], [108, 114], [108, 109], [114, 115]]] #10CO 
 
 # Set atoms object and Ebinding csv file path
-pd4_atoms = read(os.path.join(os.path.dirname(__file__), 'pd4-no-CO-CONTCAR'))
-pd7_atoms = read(os.path.join(os.path.dirname(__file__), 'pd7-no-CO-CONTCAR'))
-pd20_atoms = read(os.path.join(os.path.dirname(__file__), 'pd20-no-CO-CONTCAR'))
+bare_cluster_path = os.path.join(ProjectPath, 'dataset', 'DFT_structures', 'bare')
+interaction_path =  os.path.join(ProjectPath, 'dataset', 'interactions')
+pd4_atoms = read(os.path.join(bare_cluster_path, 'pd4-no-CO-CONTCAR'))
+pd7_atoms = read(os.path.join(bare_cluster_path, 'pd7-no-CO-CONTCAR'))
+pd20_atoms = read(os.path.join(bare_cluster_path, 'pd20-no-CO-CONTCAR'))
 
-pd4_CO_ads_csv = os.path.join(os.path.dirname(__file__), 'adsorption_constant_Pd4_mCO.csv')
-pd7_CO_ads_csv = os.path.join(os.path.dirname(__file__), 'adsorption_constant_Pd7_mCO.csv')
-pd20_CO_ads_csv = os.path.join(os.path.dirname(__file__), 'adsorption_constant_Pd20_mCO.csv')
+pd4_CO_ads_csv = os.path.join(interaction_path, 'adsorption_constant_Pd4_mCO.csv')
+pd7_CO_ads_csv = os.path.join(interaction_path, 'adsorption_constant_Pd7_mCO.csv')
+pd20_CO_ads_csv = os.path.join(interaction_path, 'adsorption_constant_Pd20_mCO.csv')
 
 
 # Predict overall CO binding energy
@@ -265,7 +267,7 @@ interactions_ev[np.where(np.abs(interactions_ev) <=  1e-5)]  = 0
 for inter_i, ei in zip(interactions['interactions'], interactions_ev):
     inter_i['E'] = ei
     
-with open('co_interactions.json', 'w') as outfile:
+with open('co_interactions_new.json', 'w') as outfile:
     json.dump(interactions, outfile, indent = 4)
 
 
@@ -357,6 +359,4 @@ ax.set_yticks(ticks)
 ax.set_xlabel(r"$\rm DFT\ E^{mCO-ads}_{\ Pd_n/CeO_2}\ (eV)$")
 ax.set_ylabel(r"$\rm CE\ Predicted\ E^{mCO-ads}_{\ Pd_n/CeO_2}\ (eV)$")
 
-#%%
 
-# the parity graph looks very bad

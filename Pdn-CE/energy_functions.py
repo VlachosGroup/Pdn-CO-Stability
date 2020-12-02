@@ -36,13 +36,13 @@ matplotlib.rc('font', **font)
 
 import platform
 HomePath = os.path.expanduser('~')
-ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-Dynamics-Model')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
 
 if platform.system() == 'Linux':
     ProjectPath = '/work/ccei_biomass/users/wangyf/cluster_project/CE_opt'
 
 
-path = os.path.join(ProjectPath, 'Cluster-Expansion', 'v11_annealing')
+path = os.path.join(ProjectPath, 'Pdn-CE')
 
 #%%
 '''
@@ -135,7 +135,7 @@ def swap_occ_empty(ind):
     return x_new, chosen_empty_i, chosen_occ_i
 
 
-def append_support(ind_index, mother, view_flag=False):
+def append_support(ind_index, mother, view_flag=False, cell_size = 5):
     '''
     Append the configuration onto a ceria support surface
     - Inputs
@@ -174,7 +174,7 @@ def append_support(ind_index, mother, view_flag=False):
         # Repeating the slab 5 unit cells in x and 5 unit cell in y directions
         # At the end the ceria slab is 10 by 10
         # the Pd supercell mother is also 10 by 10
-        slab = slab.repeat((5, 5, 1))
+        slab = slab.repeat((cell_size, cell_size, 1))
         slab.center(vacuum=10.0, axis=2)
 
         # clave the top layer O atoms
@@ -337,33 +337,12 @@ class Pdn():
             NN1_list += list(config_G.neighbors(node_i))
         NN1_list = list(set(NN1_list))
         NN1_list_empty = [i for i in NN1_list if i not in occ_indices]
-                
+
         chosen_occ_i = np.random.choice(occ_indices, 1)
+        x_new[chosen_occ_i] = 0
+
         chosen_empty_i = np.random.choice(NN1_list_empty, 1)
-        
-        if not chosen_occ_i ==  chosen_empty_i:
-            x_new[chosen_occ_i] = 0
-            x_new[chosen_empty_i] = 1
-
-        return x_new, chosen_empty_i, chosen_occ_i
-    
-    def swap_occ_empty_reverse(self, ind):
-        '''
-        Core function of the random walk
-        Swap an occupied site to an empty site on the base
-        takes in one hot numpy array - ind
-        '''
-        x_new = ind.copy()
-        occ_indices = list(np.where(x_new == 1)[0])
-        
-        base_indices = np.where(self.mother[:,2] == dz)[0]
-        base_indices_empty = list(np.where(x_new[base_indices] == 0)[0])
-
-        chosen_occ_i = np.random.choice(occ_indices, 1)
-        chosen_empty_i = np.random.choice(base_indices_empty, 1)
-        if not chosen_occ_i ==  chosen_empty_i:
-            x_new[chosen_occ_i] = 0
-            x_new[chosen_empty_i] = 1
+        x_new[chosen_empty_i] = 1
 
         return x_new, chosen_empty_i, chosen_occ_i
 

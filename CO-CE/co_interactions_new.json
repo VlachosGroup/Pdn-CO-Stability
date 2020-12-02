@@ -1,0 +1,134 @@
+{
+    "interactions": [
+        {
+            "length": 2.78,
+            "edge_type": [
+                [
+                    "top",
+                    "top"
+                ]
+            ],
+            "E": 0.24424204848589
+        },
+        {
+            "length": 1.6050337483471595,
+            "edge_type": [
+                [
+                    "hollow",
+                    "hollow"
+                ]
+            ],
+            "E": 0.0
+        },
+        {
+            "length": 2.78,
+            "edge_type": [
+                [
+                    "hollow",
+                    "hollow"
+                ]
+            ],
+            "E": 0.0
+        },
+        {
+            "length": 1.39,
+            "edge_type": [
+                [
+                    "bridge",
+                    "bridge"
+                ]
+            ],
+            "E": 0.9839492073879459
+        },
+        {
+            "length": 2.407550622520739,
+            "edge_type": [
+                [
+                    "bridge",
+                    "bridge"
+                ]
+            ],
+            "E": 0.4295323234406743
+        },
+        {
+            "length": 2.78,
+            "edge_type": [
+                [
+                    "bridge",
+                    "bridge"
+                ]
+            ],
+            "E": -0.2283774313334447
+        },
+        {
+            "length": 1.39,
+            "edge_type": [
+                [
+                    "top",
+                    "bridge"
+                ],
+                [
+                    "bridge",
+                    "top"
+                ]
+            ],
+            "E": 0.2285139922512921
+        },
+        {
+            "length": 2.407550622520739,
+            "edge_type": [
+                [
+                    "top",
+                    "bridge"
+                ],
+                [
+                    "bridge",
+                    "top"
+                ]
+            ],
+            "E": -0.10211235424265773
+        },
+        {
+            "length": 0.8025168741735798,
+            "edge_type": [
+                [
+                    "bridge",
+                    "hollow"
+                ],
+                [
+                    "hollow",
+                    "bridge"
+                ]
+            ],
+            "E": 0.0
+        },
+        {
+            "length": 2.1232600719962056,
+            "edge_type": [
+                [
+                    "bridge",
+                    "hollow"
+                ],
+                [
+                    "hollow",
+                    "bridge"
+                ]
+            ],
+            "E": -0.032226875235302155
+        },
+        {
+            "length": 1.6050337483471595,
+            "edge_type": [
+                [
+                    "top",
+                    "hollow"
+                ],
+                [
+                    "hollow",
+                    "top"
+                ]
+            ],
+            "E": 0.03629010819836776
+        }
+    ]
+}

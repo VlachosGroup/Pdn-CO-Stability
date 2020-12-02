@@ -34,14 +34,14 @@ from ase.io import read, write
 from ase.visualize import view
 
 HomePath = os.path.expanduser('~')
-ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-Dynamics-Model')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
 
 if platform.system() == 'Linux':
     ProjectPath = '/work/ccei_biomass/users/wangyf/cluster_project/CE_opt'
 
 # Energy model directory 
-energy_path = os.path.join(ProjectPath, 'Cluster-Expansion', 'v11_annealing')
-model_path = os.path.join(ProjectPath,'CO-adsorption', 'v1')
+energy_path = os.path.join(ProjectPath, 'Pdn-CE')
+model_path = os.path.join(ProjectPath,'CO-CE')
 sys.path.append(energy_path)
 sys.path.append(model_path)
 
@@ -976,7 +976,7 @@ class CO_interactions():
         # read from json if not input
         if interactions_list == None: 
             # Load the interaction_list from json file
-            interaction_json_path = os.path.join(ProjectPath, 'CO-adsorption', 'interactions', 'co_interactions.json')
+            interaction_json_path = os.path.join(ProjectPath, 'dataset', 'interactions', 'co_interactions.json')
             interactions_list = json.load(open(interaction_json_path, 'r'))['interactions']
         
         
@@ -1088,7 +1088,9 @@ if __name__ == "__main__":
 #    sitetype_list = spca.sitetype_list
 
     # or one line function
-    y_pred, COsites, CO_pos, sitetype_list, GCNs, CN1s, CN2s, ratio_surface =  predict_binding_Es_fast(read(os.path.join(os.getcwd(), 'pd20-no-CO-CONTCAR')), 
+    bare_cluster_path = os.path.join(ProjectPath, 'dataset', 'DFT_structures', 'bare')
+    pd20_atoms = read(os.path.join(bare_cluster_path, 'pd20-no-CO-CONTCAR'))
+    y_pred, COsites, CO_pos, sitetype_list, GCNs, CN1s, CN2s, ratio_surface =  predict_binding_Es_fast(pd20_atoms, 
                                                                                         [107, 96, 98, 111, 106, 99, 110, 113, 112, 115], 
                                                                                         view_flag = True, 
                                                                                         output_descriptor= True,
