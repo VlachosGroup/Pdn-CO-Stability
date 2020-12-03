@@ -1,7 +1,7 @@
 # Grand Canonical Monte Carlo (GCMC) Simulations 
 
 ### Flow chart and the type of Monte Carlo moves
-![Flowchart](\GCMC\CGMC_flowchart.svg)
+![Flowchart](/GCMC/CGMC_flowchart.svg)
 
 ## Usage 
 
