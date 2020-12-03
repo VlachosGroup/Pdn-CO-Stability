@@ -18,7 +18,7 @@ The dataset contains Pdn cluster structures in the size range from 1 to 21, desc
 - [CO-CO interactions for multiple CO adsorption](/dataset/interactions)
 
 
-## Pd cluster energy model 
+## Pdn cluster energy model 
 The machine learning model to predict Pdn energy from a given structure
 - [Pdn-CE](/Pdn-CE)
 
