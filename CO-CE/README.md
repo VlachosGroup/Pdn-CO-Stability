@@ -7,7 +7,9 @@ Two machine learning models are used to predict the energy of CO adsorbate layer
 
 ## Training 
 Model training is performed by `train_rf_model.py` and `train_interactions.py`  
+
 Run `train_rf_model.py` would generate a model pickle file, 'rf_estimator.p' 
+
 Run `train_interactions.py`  would save the interaction values in a json file, 'co_interactions_new.json'
 
 Both files can be used directly for prediction
