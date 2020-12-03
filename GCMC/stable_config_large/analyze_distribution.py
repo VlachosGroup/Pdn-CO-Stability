@@ -37,7 +37,7 @@ def set_color(violin_parts, c):
 pdx_names = [25, 30, 38, 55]  
 
 # read the data of stable configurations
-filename_stable = os.path.join(os.getcwd(),  'pd_large_stable_config_300K.csv')  
+filename_stable = os.path.join(os.getcwd(),  'pd_large_config_300K.csv')  
 df_all = pd.read_csv(filename_stable, index_col=False)
 
 #%%

@@ -2,7 +2,7 @@
 """
 Created on Tue Oct 20 23:14:25 2020
 
-Descriptor analysis for all stabel configurations
+Descriptor analysis for all equilibrium configurations
 """
 import os
 import pandas as pd
@@ -38,7 +38,7 @@ def set_color(violin_parts, c):
 
 
 # read the data of stable configurations
-filename_stable = os.path.join(os.getcwd(),  'pdall_stable_config_all_conditions.csv')   
+filename_stable = os.path.join(os.getcwd(),  'pd_all_config_all_conditions.csv')   
 df_all = pd.read_csv(filename_stable, index_col=False)
 
 # Preprocess the data
