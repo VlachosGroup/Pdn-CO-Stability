@@ -1,26 +1,16 @@
-# CO cluster expansion (CE)
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Dec  3 10:15:44 2020
 
-Two machine learning models are used to predict the energy of CO adsorbate layer
+@author: Yifan Wang
+"""
 
-- A random forest model (RF) for Single CO adsorption energy 
-- A ordinary least square (OLS) regression for CO lateral interactions 
+'''
+Test for CO-CE model predictions
+'''
 
-## Training 
-Model training is performed by `train_rf_model.py` and `train_interactions.py`  
+#%% Import session
 
-Run `train_rf_model.py` would generate a model pickle file, 'rf_estimator.p' 
-
-Run `train_interactions.py`  would save the interaction values in a json file, 'co_interactions_new.json'
-
-Both files can be used directly for prediction
-
-
-## Usage 
-See `test_model_usage_co.py` for details
-
-
-- Import session
-```
 import os
 import sys
 import platform
@@ -38,11 +28,13 @@ energy_path = os.path.join(ProjectPath, 'Pdn-CE')
 model_path = os.path.join(ProjectPath,'CO-CE')
 sys.path.append(energy_path)
 sys.path.append(model_path)
-import binding_functions as binding
-```
 
-- Predict single CO adsorption energies a Pd20 structures 
-```
+import binding_functions as binding
+
+#%% 
+'''
+Predict single CO adsorption energies and geometric descriptors for a Pd20 structure
+'''
 # Import a CONTCAR file from DFT
 CONTCAR_filename = 'pd20-no-CO-CONTCAR'
 bare_cluster_path = os.path.join(ProjectPath, 'dataset', 'DFT_structures', 'bare')
@@ -56,23 +48,19 @@ binding_Es, COsites, CO_pos, sitetype_list, GCNs, CN1s, CN2s, ratio_surface =  b
                                                                                                            view_flag = False, 
                                                                                                            output_descriptor= True,
                                                                                                            top_only= False)
-```
-Longer version of the code
-```
-COsites = binding.find_sites(Pd_interest, pd20_atoms)
-#specific the ML model
-spca = binding.pca_model('spca')
-spca.predict_binding_E(pd20_atoms, COsites)
-y_bind = spca.y_bind
-y_pred = y_bind.copy()
-sitetype_list = spca.sitetype_list
-```
 
+# # Longer version of the code
+# COsites = binding.find_sites(Pd_interest, pd20_atoms)
+# #specific the ML model
+# spca = binding.pca_model('spca')
+# spca.predict_binding_E(pd20_atoms, COsites)
+# y_bind = spca.y_bind
+# y_pred = y_bind.copy()
+# sitetype_list = spca.sitetype_list
 
-
-- Predict the interactions and total energy for the adlayer
-```
-# Assume some COs are occupied
+'''
+Assume some COs are occupied, predict the interactions and total energy for the adlayer
+'''
 co_config = [0, 1, 2, 36, 35]
 # Use the interactions class
 interactions = binding.CO_interactions(CO_pos, sitetype_list, co_config)
@@ -80,11 +68,13 @@ interactions = binding.CO_interactions(CO_pos, sitetype_list, co_config)
 total_interactions = interactions.cal_interactions()
 # calculate the total adlayer enegry
 total_E = interactions.cal_binding_Es_total(binding_Es)
-```
 
-- Visualize structures
-```
+
+'''
+Visualize atoms
+'''
 PdnCOm_obj = binding.PdnCOm(pd20_atoms, Pd_interest)
 PdnCOm_atoms = PdnCOm_obj.append_COs(co_config, view_flag = True)
-```
 
+    
+    
