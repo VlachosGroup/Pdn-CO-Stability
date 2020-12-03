@@ -30,6 +30,7 @@ The machine learning model to predict CO adlayer energy from a given structure
 
 ## Structure optimization algoirthms in Grand Cannoical ensembles 
 [Grand Cannoical Monte Carlo (GCMC)](/GCMC)
+
 Automatic discovery of optimal (lowest free energy) adsorbate layer structures at a given temperature and CO pressure 
 
 ![Operators](/GCMC/GCMC_flowchart.svg)
