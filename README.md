@@ -5,8 +5,8 @@
 ## Computational Framework 
 ![framework](docs/framework.svg)
 
-Note
-- Machine learning models are efficient structure-energy mapping
+Notes:
+- Machine learning models are efficient structure-to-energy mappings
 - Low energy indicates higher stability 
 - Monte Carlo simualtions are used to optimize the strutcure 
 
