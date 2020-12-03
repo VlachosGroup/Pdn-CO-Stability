@@ -1,7 +1,7 @@
 # Grand Canonical Monte Carlo (GCMC) Simulations 
 
 ### Flow chart and the type of Monte Carlo moves
-![Flowchart](CGMC_flowchart.svg)
+![Flowchart](/GCMC/GCMC_flowchart.svg)
 
 ## Usage 
 
@@ -23,5 +23,5 @@ Or by executing `run_CGMC_single_GA.py` for a larger cluster
 
 
 ### Descriptor data
-- `equilibrium_config\pd_all_config_all_conditions.csv` descriptor values for all equilibrated structures (n = 1-21)
-- `equilibrium_config_large\pd_large_config_300K.csv` descriptor values for all equilibrated structures (n = 25, 30, 38, 55)
+- `equilibrium_config/pd_all_config_all_conditions.csv` descriptor values for all equilibrated structures (n = 1-21)
+- `equilibrium_config_large/pd_large_config_300K.csv` descriptor values for all equilibrated structures (n = 25, 30, 38, 55)
