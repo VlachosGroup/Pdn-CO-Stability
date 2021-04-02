@@ -45,6 +45,10 @@ Automatic discovery of optimal (lowest free energy) adsorbate layer structures a
 - [Sklearn](https://scikit-learn.org/stable/): Used for training machine learning models
 - [Seaborn](https://seaborn.pydata.org/): Used for plotting
 - [Networkx](https://networkx.github.io/): Used for graph opertations
+- [ase](https://wiki.fysik.dtu.dk/ase/index.html): Used for atomic structure representation
+- [sympy](https://docs.sympy.org/latest/index.html): Used for geometry calculations
+- [mpi4py](https://mpi4py.readthedocs.io/en/stable/): Used for paralleling GCMC simulations
+
 
 
 ## Publication

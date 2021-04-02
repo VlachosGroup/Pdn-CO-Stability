@@ -14,7 +14,7 @@ for file in glob.glob("*CONTCAR"):
     files.append(file)
 
 
-filename = files[1]
+filename = files[0]
 
 atoms = read(filename)
 view(atoms)
