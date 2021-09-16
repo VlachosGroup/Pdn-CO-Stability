@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar  4 16:43:23 2020
-
-@author: Yifan Wang
-"""
-
 """
 Train CO literal interaction correction OLS model
+Note that each run may result in slight changes 
+in the interaction values 
 """
 
 '''
