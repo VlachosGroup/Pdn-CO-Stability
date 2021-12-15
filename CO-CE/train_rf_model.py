@@ -37,6 +37,16 @@ matplotlib.rcParams['ytick.major.width'] = 2
 dpi = 300.
 matplotlib.rcParams['figure.dpi'] = dpi
 
+HomePath = os.path.expanduser('~')
+ProjectPath = os.path.join(HomePath, 'Documents', 'GitHub', 'Pdn-CO-Stability')
+
+
+# CO binding model directory
+binding_path = os.path.join(ProjectPath, 'CO-CE')
+# Energy model directory
+energy_path = os.path.join(ProjectPath, 'Pdn-CE')
+# data directory
+data_path = os.path.join(ProjectPath, 'dataset')
 
 from matplotlib import cm
 viridis = cm.get_cmap('viridis', 5)
@@ -112,7 +122,7 @@ def plot_importances(estimator, descriptors):
     
     
 #%% Processs descriptor_data.cvs
-fdata = pd.read_csv('descriptor_data.csv')
+fdata = pd.read_csv(os.path.join(data_path, 'descriptors', 'descriptor_data.csv'))
 
 #possible descriptors
 descriptors_all =  ['NPd', 'CN1', 'CN2','GCN', 'Z', 'Charge', 'Nsites', 'Pd1C', 'Pd2C', 'Pd3C', 'CeCN1', 'OCN1'] #10 in total
@@ -218,7 +228,8 @@ rf_opt = RandomForestRegressor(n_estimators = n_estimators_opt,
                                      max_depth = max_depth_opt,
                                      random_state=0)
 rf_opt.fit(X_train, y_train)
-
+# validation errors for the optimal model
+[cv_RMSE_mean, cv_RMSE_std, _, _] = cross_validation(X_train, y_train, rf_opt)
 
 # Error on test data
 y_predict_test = rf_opt.predict(X_test)
